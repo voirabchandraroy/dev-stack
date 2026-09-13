@@ -18,17 +18,17 @@ const technologiesfetch = async (): Promise<Technology[]> => {
 const technologiesPromise = technologiesfetch();
 
 function App() {
-
   const [stack, setStack] = useState<Technology[]>([]);
 
   return (
-    <>
+    <div className="min-h-screen bg-white text-gray-900 dark:bg-[#111315] dark:text-white">
+
       <Nave />
 
       <Herosection />
 
-      <main
-        className="mx-auto max-w-7xl px-5 py-16 md:px-8">
+      <main className="mx-auto max-w-7xl px-5 py-16 md:px-8">
+
         <div className="mb-10 max-w-xl">
           <h2 className="text-3xl font-bold tracking-tight">
             Explore{" "}
@@ -36,7 +36,8 @@ function App() {
               Technologies
             </span>
           </h2>
-          <p className="mt-3 text-gray-500">
+
+          <p className="mt-3 text-gray-500 dark:text-gray-400">
             Frontend, backend, databases, and tools — pick what fits
             and add it straight to your stack.
           </p>
@@ -44,7 +45,13 @@ function App() {
 
         <div className="grid items-start gap-5 lg:grid-cols-[1fr_280px]">
 
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense
+            fallback={
+              <div className="text-gray-600 dark:text-gray-300">
+                Loading...
+              </div>
+            }
+          >
             <Tecnologes
               technologiesPromise={technologiesPromise}
               stack={stack}
@@ -52,14 +59,19 @@ function App() {
             />
           </Suspense>
 
-          <YourStack stack={stack} setStack={setStack} />
-        </div>
+          <YourStack
+            stack={stack}
+            setStack={setStack}
+          />
 
+        </div>
       </main>
 
       <ToastContainer position="bottom-right" />
-      <Footer/>
-    </>
+
+      <Footer />
+
+    </div>
   );
 }
 

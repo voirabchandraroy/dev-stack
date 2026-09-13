@@ -5,173 +5,210 @@ const Nav = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <nav className="sticky top-0 z-50 w-full bg-white/95 dark:bg-[#17191a]/95 backdrop-blur-md border-b border-gray-100 dark:border-gray-700">
-            <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <nav className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-md dark:border-gray-700 dark:bg-[#17191a]/80">
+            <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 py-3.5 md:px-8">
 
-                <div className="h-16 relative flex items-center justify-between">
+                {/* Mobile Menu + Desktop Logo */}
+                <div className="flex items-center">
 
-                    {/* Mobile Menu + Desktop Logo */}
-                    <div className="flex items-center">
+                    <button
+                        onClick={() => setMenuOpen(!menuOpen)}
+                        aria-label="Toggle menu"
+                        aria-expanded={menuOpen}
+                        className="flex h-9 w-9 flex-none items-center justify-center rounded-lg border border-gray-200 text-gray-700 transition hover:text-pink-500 dark:border-gray-700 dark:text-gray-200 md:hidden"
+                    >
+                        {menuOpen ? (
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={2}
+                                stroke="currentColor"
+                                className="h-6 w-6"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M6 18L18 6M6 6l12 12"
+                                />
+                            </svg>
+                        ) : (
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={2}
+                                stroke="currentColor"
+                                className="h-6 w-6"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M4 6h16M4 12h16M4 18h16"
+                                />
+                            </svg>
+                        )}
+                    </button>
 
-                        <button
-                            onClick={() => setMenuOpen(!menuOpen)}
-                            className="md:hidden flex items-center justify-center w-9 h-9 text-gray-700 dark:text-gray-200 hover:text-pink-500 transition shrink-0"
-                            aria-label="Toggle menu"
-                        >
-                            {menuOpen ? (
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth={2}
-                                    stroke="currentColor"
-                                    className="w-6 h-6"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M6 18L18 6M6 6l12 12"
-                                    />
-                                </svg>
-                            ) : (
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth={2}
-                                    stroke="currentColor"
-                                    className="w-6 h-6"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M4 6h16M4 12h16M4 18h16"
-                                    />
-                                </svg>
-                            )}
-                        </button>
-
-                        <div className="hidden md:block w-32">
-                            <img
-                                src={logo}
-                                alt="Dev Stack Logo"
-                                className="w-full h-auto object-contain"
-                            />
-                        </div>
-
-                    </div>
-
-                    {/* Mobile Logo */}
-                    <div className="absolute left-1/2 -translate-x-1/2 md:hidden">
-                        <div className="w-16 sm:w-20">
-                            <img
-                                src={logo}
-                                alt="Dev Stack Logo"
-                                className="w-full h-auto object-contain"
-                            />
-                        </div>
-                    </div>
-
-                    {/* Desktop Menu */}
-                    <ul className="hidden md:flex items-center justify-center gap-4 lg:gap-7 flex-1">
-
-                        <li className="text-sm lg:text-base font-medium text-gray-700 dark:text-gray-200 hover:text-pink-500 transition whitespace-nowrap cursor-pointer">
-                            Home
-                        </li>
-
-                        <li className="text-sm lg:text-base font-medium text-gray-700 dark:text-gray-200 hover:text-pink-500 transition whitespace-nowrap cursor-pointer">
-                            Technologies
-                        </li>
-
-                        <li className="text-sm lg:text-base font-medium text-gray-700 dark:text-gray-200 hover:text-pink-500 transition whitespace-nowrap cursor-pointer">
-                            Projects
-                        </li>
-
-                        <li className="text-sm lg:text-base font-medium text-gray-700 dark:text-gray-200 hover:text-pink-500 transition whitespace-nowrap cursor-pointer">
-                            About
-                        </li>
-
-                        <li className="text-sm lg:text-base font-medium text-gray-700 dark:text-gray-200 hover:text-pink-500 transition whitespace-nowrap cursor-pointer">
-                            Contact
-                        </li>
-
-                    </ul>
-
-                    {/* Auth Buttons */}
-                    <div className="flex items-center justify-end gap-0.5 sm:gap-2 shrink-0">
-
-                        <button
-                            className="
-                                px-1.5 sm:px-3
-                                py-2
-                                text-[11px] sm:text-sm lg:text-base
-                                font-medium
-                                text-gray-700 dark:text-gray-200
-                                hover:text-pink-500
-                                transition
-                                whitespace-nowrap
-                            "
-                        >
-                            Sign In
-                        </button>
-
-                        <button
-                            className="
-                                px-2.5 sm:px-4 lg:px-5
-                                py-2
-                                text-[11px] sm:text-sm lg:text-base
-                                font-semibold
-                                text-white
-                                rounded-full
-                                bg-linear-to-r
-                                from-orange-500
-                                via-pink-500
-                                to-violet-600
-                                hover:opacity-90
-                                transition
-                                shadow-sm
-                                whitespace-nowrap
-                            "
-                        >
-                            Sign Up
-                        </button>
-
+                    <div className="hidden w-32 md:block">
+                        <img
+                            src={logo}
+                            alt="Dev Stack Logo"
+                            className="h-auto w-full object-contain"
+                        />
                     </div>
 
                 </div>
 
-                {/* Mobile Menu */}
-                {menuOpen && (
-                    <div className="md:hidden border-t border-gray-100 dark:border-gray-700 py-3">
-
-                        <ul className="flex flex-col gap-1">
-
-                            <li className="px-3 py-2.5 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-pink-500 transition cursor-pointer">
-                                Home
-                            </li>
-
-                            <li className="px-3 py-2.5 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-pink-500 transition cursor-pointer">
-                                Technologies
-                            </li>
-
-                            <li className="px-3 py-2.5 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-pink-500 transition cursor-pointer">
-                                Projects
-                            </li>
-
-                            <li className="px-3 py-2.5 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-pink-500 transition cursor-pointer">
-                                About
-                            </li>
-
-                            <li className="px-3 py-2.5 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-pink-500 transition cursor-pointer">
-                                Contact
-                            </li>
-
-                        </ul>
-
+                {/* Mobile Logo */}
+                <div className="absolute left-1/2 -translate-x-1/2 md:hidden">
+                    <div className="w-16 sm:w-20">
+                        <img
+                            src={logo}
+                            alt="Dev Stack Logo"
+                            className="h-auto w-full object-contain"
+                        />
                     </div>
-                )}
+                </div>
+
+                {/* Desktop Menu */}
+                <ul className="hidden items-center gap-8 md:flex">
+
+                    <li>
+                        <a
+                            href="#"
+                            className="text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                        >
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="#"
+                            className="text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                        >
+                            Technologies
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="#"
+                            className="text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                        >
+                            Projects
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="#"
+                            className="text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                        >
+                            About
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="#"
+                            className="text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                        >
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+                {/* Auth Buttons */}
+                <div className="flex flex-none items-center gap-2 sm:gap-3">
+
+                    <button
+                        className="hidden text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white min-[420px]:block"
+                    >
+                        Sign In
+                    </button>
+
+                    <button
+                        className="rounded-full bg-linear-to-r from-orange-500 via-pink-500 to-violet-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-pink-500/10 transition-transform hover:scale-[1.03] sm:px-5"
+                    >
+                        Sign Up
+                    </button>
+
+                </div>
 
             </div>
+
+            {/* Mobile dropdown menu */}
+            {menuOpen && (
+                <div className="border-t border-gray-200 bg-white px-5 py-4 dark:border-gray-700 dark:bg-[#17191a] md:hidden">
+
+                    <ul className="flex flex-col gap-1">
+
+                        <li>
+                            <a
+                                href="#"
+                                onClick={() => setMenuOpen(false)}
+                                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+                            >
+                                Home
+                            </a>
+                        </li>
+
+                        <li>
+                            <a
+                                href="#"
+                                onClick={() => setMenuOpen(false)}
+                                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+                            >
+                                Technologies
+                            </a>
+                        </li>
+
+                        <li>
+                            <a
+                                href="#"
+                                onClick={() => setMenuOpen(false)}
+                                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+                            >
+                                Projects
+                            </a>
+                        </li>
+
+                        <li>
+                            <a
+                                href="#"
+                                onClick={() => setMenuOpen(false)}
+                                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+                            >
+                                About
+                            </a>
+                        </li>
+
+                        <li>
+                            <a
+                                href="#"
+                                onClick={() => setMenuOpen(false)}
+                                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+                            >
+                                Contact
+                            </a>
+                        </li>
+
+                        <li className="pt-2 min-[420px]:hidden">
+                            <button
+                                className="w-full rounded-lg px-3 py-2.5 text-left text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+                            >
+                                Sign In
+                            </button>
+                        </li>
+
+                    </ul>
+
+                </div>
+            )}
+
         </nav>
     );
 };
